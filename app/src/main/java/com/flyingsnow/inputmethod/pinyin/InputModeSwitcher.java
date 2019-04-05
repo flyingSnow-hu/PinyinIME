@@ -19,6 +19,8 @@ package com.flyingsnow.inputmethod.pinyin;
 import com.flyingsnow.inputmethod.pinyin.SoftKeyboard.KeyRow;
 
 import android.content.res.Resources;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 
 /**
@@ -91,11 +93,18 @@ public class InputModeSwitcher {
      * {@link #MASK_SKB_LAYOUT} to get its soft keyboard layout.
      */
     private static final int MASK_SKB_LAYOUT_PHONE = 0x50000000;
+
     /**
      * A kind of soft keyboard layout. An input mode should be anded with
      * {@link #MASK_SKB_LAYOUT} to get its soft keyboard layout.
      */
-    private static final int MASK_SKB_LAYOUT_CONS = 0x60000000;
+    private static final int MASK_SKB_LAYOUT_PY_CONS = 0x60000000;
+
+    /**
+     * A kind of soft keyboard layout. An input mode should be anded with
+     * {@link #MASK_SKB_LAYOUT} to get its soft keyboard layout.
+     */
+    private static final int MASK_SKB_LAYOUT_PY_VOWEL = 0x70000000;
 
     /**
      * Used to indicate which language the current input mode is in. If the
@@ -142,9 +151,16 @@ public class InputModeSwitcher {
     private static final int MASK_CASE_UPPER = 0x00200000;
 
     /**
-     * Mode for inputing Chinese with soft keyboard.
+     * Mode for 汉语声母
      */
-    public static final int MODE_SKB_CHINESE = (MASK_SKB_LAYOUT_QWERTY | MASK_LANGUAGE_CN);
+    public static final int MODE_SKB_CHINESE_CONS = (MASK_SKB_LAYOUT_PY_CONS
+            | MASK_LANGUAGE_CN);
+
+    /**
+     * Mode for 汉语韵母
+     */
+    public static final int MODE_SKB_CHINESE_VOWEL = (MASK_SKB_LAYOUT_PY_VOWEL
+            | MASK_LANGUAGE_CN);
 
     /**
      * Mode for inputing basic symbols for Chinese mode with soft keyboard.
@@ -225,12 +241,12 @@ public class InputModeSwitcher {
      * mode to input symbols, and we have a hardware keyboard for the current
      * situation), {@link #mRecentLauageInputMode} will be tried.
      **/
-    private int mPreviousInputMode = MODE_SKB_CHINESE;
+    private int mPreviousInputMode = MODE_SKB_CHINESE_CONS;
 
     /**
      * Used to remember recent mode to input language.
      */
-    private int mRecentLauageInputMode = MODE_SKB_CHINESE;
+    private int mRecentLauageInputMode = MODE_SKB_CHINESE_CONS;
 
     /**
      * Editor information of the current edit box.
@@ -347,6 +363,13 @@ public class InputModeSwitcher {
      */
     private int mToggleRowEmailAddress;
 
+    /**
+     * 拼音字母的行
+     */
+    private int mToggleRowPyNoCons;
+    private int mToggleRowPyBP;
+    private int mToggleRowPyM;
+
     class ToggleStates {
         /**
          * If it is true, this soft keyboard is a QWERTY one.
@@ -412,6 +435,10 @@ public class InputModeSwitcher {
         mToggleRowUri = Integer.parseInt(r.getString(R.string.toggle_row_uri));
         mToggleRowEmailAddress = Integer.parseInt(r
                 .getString(R.string.toggle_row_emailaddress));
+
+        mToggleRowPyNoCons = Integer.parseInt(r.getString(R.string.toggle_row_py_no_cons));
+        mToggleRowPyBP = Integer.parseInt(r.getString(R.string.toggle_row_py_bp));
+        mToggleRowPyM = Integer.parseInt(r.getString(R.string.toggle_row_py_m));
     }
 
     public int getInputMode() {
@@ -424,7 +451,6 @@ public class InputModeSwitcher {
 
     public int getSkbLayout() {
         int layout = (mInputMode & MASK_SKB_LAYOUT);
-
         switch (layout) {
         case MASK_SKB_LAYOUT_QWERTY:
             return R.xml.skb_qwerty;
@@ -436,6 +462,10 @@ public class InputModeSwitcher {
             return R.xml.skb_smiley;
         case MASK_SKB_LAYOUT_PHONE:
             return R.xml.skb_phone;
+        case MASK_SKB_LAYOUT_PY_CONS:
+            return R.xml.skb_py_cons;
+        case MASK_SKB_LAYOUT_PY_VOWEL:
+            return R.xml.skb_py_vowel;
         }
         return 0;
     }
@@ -459,11 +489,12 @@ public class InputModeSwitcher {
         int newInputMode = MODE_UNSET;
 
         if (USERDEF_KEYCODE_LANG_2 == userKey) {
-            if (MODE_SKB_CHINESE == mInputMode) {
+            if (MODE_SKB_CHINESE_CONS == mInputMode
+                    || MODE_SKB_CHINESE_VOWEL == mInputMode) {
                 newInputMode = MODE_SKB_ENGLISH_LOWER;
             } else if (MODE_SKB_ENGLISH_LOWER == mInputMode
                     || MODE_SKB_ENGLISH_UPPER == mInputMode) {
-                newInputMode = MODE_SKB_CHINESE;
+                newInputMode = MODE_SKB_CHINESE_CONS;
             } else if (MODE_SKB_SYMBOL1_CN == mInputMode) {
                 newInputMode = MODE_SKB_SYMBOL1_EN;
             } else if (MODE_SKB_SYMBOL1_EN == mInputMode) {
@@ -473,10 +504,11 @@ public class InputModeSwitcher {
             } else if (MODE_SKB_SYMBOL2_EN == mInputMode) {
                 newInputMode = MODE_SKB_SYMBOL2_CN;
             } else if (MODE_SKB_SMILEY == mInputMode) {
-                newInputMode = MODE_SKB_CHINESE;
+                newInputMode = MODE_SKB_CHINESE_CONS;
             }
         } else if (USERDEF_KEYCODE_SYM_3 == userKey) {
-            if (MODE_SKB_CHINESE == mInputMode) {
+            if (MODE_SKB_CHINESE_CONS == mInputMode
+                    || MODE_SKB_CHINESE_VOWEL == mInputMode) {
                 newInputMode = MODE_SKB_SYMBOL1_CN;
             } else if (MODE_SKB_ENGLISH_UPPER == mInputMode
                     || MODE_SKB_ENGLISH_LOWER == mInputMode) {
@@ -486,7 +518,7 @@ public class InputModeSwitcher {
                 newInputMode = MODE_SKB_ENGLISH_LOWER;
             } else if (MODE_SKB_SYMBOL1_CN == mInputMode
                     || MODE_SKB_SYMBOL2_CN == mInputMode) {
-                newInputMode = MODE_SKB_CHINESE;
+                newInputMode = MODE_SKB_CHINESE_CONS;
             } else if (MODE_SKB_SMILEY == mInputMode) {
                 newInputMode = MODE_SKB_SYMBOL1_CN;
             }
@@ -505,16 +537,31 @@ public class InputModeSwitcher {
             }
             newInputMode = ((mInputMode & (~MASK_SKB_LAYOUT)) | sym);
         } else if (USERDEF_KEYCODE_SMILEY_6 == userKey) {
-            if (MODE_SKB_CHINESE == mInputMode) {
+            if (MODE_SKB_CHINESE_CONS == mInputMode
+                    || MODE_SKB_CHINESE_VOWEL == mInputMode) {
                 newInputMode = MODE_SKB_SMILEY;
             } else {
-                newInputMode = MODE_SKB_CHINESE;
+                newInputMode = MODE_SKB_CHINESE_CONS;
             }
         } else if (USERDEF_KEYCODE_PHONE_SYM_4 == userKey) {
             if (MODE_SKB_PHONE_NUM == mInputMode) {
                 newInputMode = MODE_SKB_PHONE_SYM;
             } else {
                 newInputMode = MODE_SKB_PHONE_NUM;
+            }
+        } else if (KeyCodeEx.isChineseCons(userKey) || KeyCodeEx.KEYCODE_DELIMETER == userKey)
+        {
+            if (MODE_SKB_CHINESE_CONS == mInputMode) {
+                int keyRow = KeyCodeEx.keyCodeToKeyRow(userKey,mImeService.getResources());
+                if (keyRow != 0){
+                    mToggleStates.mRowIdToEnable = keyRow;
+                }
+                newInputMode = MODE_SKB_CHINESE_VOWEL;
+            }
+        }else if (KeyCodeEx.isChineseVowel(userKey) || KeyEvent.KEYCODE_DEL == userKey)
+        {
+            if (MODE_SKB_CHINESE_VOWEL == mInputMode) {
+                newInputMode = MODE_SKB_CHINESE_CONS;
             }
         }
 
@@ -578,7 +625,7 @@ public class InputModeSwitcher {
     public int requestInputWithSkb(EditorInfo editorInfo) {
         mShortMessageField = false;
 
-        int newInputMode = MODE_SKB_CHINESE;
+        int newInputMode = MODE_SKB_CHINESE_CONS;
 
         switch (editorInfo.inputType & EditorInfo.TYPE_MASK_CLASS) {
         case EditorInfo.TYPE_CLASS_NUMBER:
@@ -606,7 +653,7 @@ public class InputModeSwitcher {
                 newInputMode = mInputMode;
                 if (0 == skbLayout) {
                     if ((mInputMode & MASK_LANGUAGE) == MASK_LANGUAGE_CN) {
-                        newInputMode = MODE_SKB_CHINESE;
+                        newInputMode = MODE_SKB_CHINESE_CONS;
                     } else {
                         newInputMode = MODE_SKB_ENGLISH_LOWER;
                     }
@@ -619,7 +666,7 @@ public class InputModeSwitcher {
             newInputMode = mInputMode;
             if (0 == skbLayout) {
                 if ((mInputMode & MASK_LANGUAGE) == MASK_LANGUAGE_CN) {
-                    newInputMode = MODE_SKB_CHINESE;
+                    newInputMode = MODE_SKB_CHINESE_CONS;
                 } else {
                     newInputMode = MODE_SKB_ENGLISH_LOWER;
                 }
@@ -665,7 +712,7 @@ public class InputModeSwitcher {
 
     public boolean isChineseText() {
         int skbLayout = (mInputMode & MASK_SKB_LAYOUT);
-        if (MASK_SKB_LAYOUT_QWERTY == skbLayout || 0 == skbLayout) {
+        if (MASK_SKB_LAYOUT_PY_CONS == skbLayout || MASK_SKB_LAYOUT_PY_VOWEL == skbLayout || 0 == skbLayout) {
             int language = (mInputMode & MASK_LANGUAGE);
             if (MASK_LANGUAGE_CN == language) return true;
         }
@@ -683,7 +730,7 @@ public class InputModeSwitcher {
 
     public boolean isChineseTextWithSkb() {
         int skbLayout = (mInputMode & MASK_SKB_LAYOUT);
-        if (MASK_SKB_LAYOUT_QWERTY == skbLayout) {
+        if (MASK_SKB_LAYOUT_PY_CONS == skbLayout || MASK_SKB_LAYOUT_PY_VOWEL == skbLayout) {
             int language = (mInputMode & MASK_LANGUAGE);
             if (MASK_LANGUAGE_CN == language) return true;
         }
@@ -752,7 +799,7 @@ public class InputModeSwitcher {
             if (MASK_LANGUAGE_CN == language) {
                 // Chinese and Chinese symbol are always the default states,
                 // do not add a toggling operation.
-                if (MASK_SKB_LAYOUT_QWERTY == layout) {
+                if (MASK_SKB_LAYOUT_PY_CONS == layout || MASK_SKB_LAYOUT_PY_VOWEL == layout) {
                     mToggleStates.mQwerty = true;
                     mToggleStates.mQwertyUpperCase = true;
                     if (mShortMessageField) {
@@ -780,15 +827,18 @@ public class InputModeSwitcher {
             }
 
             // Toggle rows for QWERTY.
-            mToggleStates.mRowIdToEnable = KeyRow.DEFAULT_ROW_ID;
-            if (variation == EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS) {
-                mToggleStates.mRowIdToEnable = mToggleRowEmailAddress;
-            } else if (variation == EditorInfo.TYPE_TEXT_VARIATION_URI) {
-                mToggleStates.mRowIdToEnable = mToggleRowUri;
-            } else if (MASK_LANGUAGE_CN == language) {
-                mToggleStates.mRowIdToEnable = mToggleRowCn;
-            } else if (MASK_LANGUAGE_EN == language) {
-                mToggleStates.mRowIdToEnable = mToggleRowEn;
+            if (MASK_LANGUAGE_CN != language)
+            {
+                mToggleStates.mRowIdToEnable = KeyRow.DEFAULT_ROW_ID;
+                if (variation == EditorInfo.TYPE_TEXT_VARIATION_EMAIL_ADDRESS) {
+                    mToggleStates.mRowIdToEnable = mToggleRowEmailAddress;
+                } else if (variation == EditorInfo.TYPE_TEXT_VARIATION_URI) {
+                    mToggleStates.mRowIdToEnable = mToggleRowUri;
+                    //} else if (MASK_LANGUAGE_CN == language) {
+                    //mToggleStates.mRowIdToEnable = mToggleRowCn;
+                } else if (MASK_LANGUAGE_EN == language) {
+                    mToggleStates.mRowIdToEnable = mToggleRowEn;
+                }
             }
         } else {
             if (MASK_CASE_UPPER == charcase) {

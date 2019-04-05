@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.4.1)
 
 add_library(jni_pinyinime SHARED
-		android/com_flyingsnow_inputmethod_pinyin_PinyinDecoderService.cpp
+			android/com_flyingsnow_inputmethod_pinyin_PinyinDecoderService.cpp
            	share/dictbuilder.cpp
            	share/dictlist.cpp
            	share/dicttrie.cpp

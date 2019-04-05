@@ -49,6 +49,7 @@ import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import java.util.Vector;
 
 /**
@@ -295,6 +296,9 @@ public class PinyinIME extends InputMethodService {
             return mImEn.processKey(getCurrentInputConnection(), event,
                     mInputModeSwitcher.isEnglishUpperCaseWithSkb(), realAction);
         } else if (mInputModeSwitcher.isChineseText()) {
+            if(realAction){
+                updateIcon(mInputModeSwitcher.switchModeForUserKey(keyCode));
+            }
             if (mImeState == ImeState.STATE_IDLE ||
                     mImeState == ImeState.STATE_APP_COMPLETION) {
                 mImeState = ImeState.STATE_IDLE;
@@ -318,31 +322,6 @@ public class PinyinIME extends InputMethodService {
 
     // keyCode can be from both hard key or soft key.
     private boolean processFunctionKeys(int keyCode, boolean realAction) {
-        if (keyCode == KeyCodeEx.KEYCODE_ZH){
-            if (!realAction) return true;
-            InputConnection ic = getCurrentInputConnection();
-            if (ic != null) {
-                ic.commitText("zh", 1);
-            }
-            return true;
-        }
-        if (keyCode == KeyCodeEx.KEYCODE_CH){
-            if (!realAction) return true;
-            InputConnection ic = getCurrentInputConnection();
-            if (ic != null) {
-                ic.commitText("ch", 1);
-            }
-            return true;
-        }
-        if (keyCode == KeyCodeEx.KEYCODE_SH){
-            if (!realAction) return true;
-            InputConnection ic = getCurrentInputConnection();
-            if (ic != null) {
-                ic.commitText("sh", 1);
-            }
-            return true;
-        }
-
         // Back key is used to dismiss all popup UI in a soft keyboard.
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             if (isInputViewShown()) {
@@ -427,6 +406,15 @@ public class PinyinIME extends InputMethodService {
             if (!realAction) return true;
             mDecInfo.addSplChar((char) keyChar, true);
             chooseAndUpdate(-1);
+            mSkbContainer.updateInputMode();
+            return true;
+        } else if(KeyCodeEx.isComplexKey(keyCode)){
+            if (!realAction) return true;
+            if (KeyCodeEx.KEYCODE_DELIMETER != keyCode) {
+                mDecInfo.addSplString(KeyCodeEx.codeToString(keyCode), true);
+                chooseAndUpdate(-1);
+            }
+            mSkbContainer.updateInputMode();
             return true;
         } else if (keyCode == KeyEvent.KEYCODE_DEL) {
             if (!realAction) return true;
@@ -498,10 +486,11 @@ public class PinyinIME extends InputMethodService {
             }
         }
 
-        if (keyChar >= 'a' && keyChar <= 'z' || keyChar == '\''
-                && !mDecInfo.charBeforeCursorIsSeparator()
+        if (keyChar >= 'a' && keyChar <= 'z' || KeyCodeEx.isComplexKey(keyCode) ||
+                (keyChar == '\'' && !mDecInfo.charBeforeCursorIsSeparator())
                 || keyCode == KeyEvent.KEYCODE_DEL) {
             if (!realAction) return true;
+            mSkbContainer.updateInputMode();
             return processSurfaceChange(keyChar, keyCode);
         } else if (keyChar == ',' || keyChar == '.') {
             if (!realAction) return true;
@@ -594,6 +583,15 @@ public class PinyinIME extends InputMethodService {
             changeToStateInput(true);
             mDecInfo.addSplChar((char) keyChar, true);
             chooseAndUpdate(-1);
+//            mInputModeSwitcher.switchConsVowel();
+            mSkbContainer.updateInputMode();
+        } else if(KeyCodeEx.isComplexKey(keyCode)){
+            if (KeyCodeEx.KEYCODE_DELIMETER != keyCode) {
+                changeToStateInput(true);
+                mDecInfo.addSplString(KeyCodeEx.codeToString(keyCode), true);
+                chooseAndUpdate(-1);
+            }
+            mSkbContainer.updateInputMode();
         } else if (keyChar == ',' || keyChar == '.') {
             inputCommaPeriod("", keyChar, true, ImeState.STATE_IDLE);
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_UP
@@ -764,10 +762,14 @@ public class PinyinIME extends InputMethodService {
             return true;
         }
 
-        if ((keyChar >= 'a' && keyChar <= 'z')
+        if ((keyChar >= 'a' && keyChar <= 'z') || KeyCodeEx.isComplexKey(keyCode)
                 || (keyChar == '\'' && !mDecInfo.charBeforeCursorIsSeparator())
                 || (((keyChar >= '0' && keyChar <= '9') || keyChar == ' ') && ImeState.STATE_COMPOSING == mImeState)) {
-            mDecInfo.addSplChar((char) keyChar, false);
+             if(KeyCodeEx.isComplexKey(keyCode)){
+                 mDecInfo.addSplString(KeyCodeEx.codeToString(keyCode),false);
+            }else {
+                 mDecInfo.addSplChar((char) keyChar, false);
+             }
             chooseAndUpdate(-1);
         } else if (keyCode == KeyEvent.KEYCODE_DEL) {
             mDecInfo.prepareDeleteBeforeCursor();
@@ -1542,6 +1544,11 @@ public class PinyinIME extends InputMethodService {
         private StringBuffer mSurface;
 
         /**
+         *  mSurface 里的分字母计数，用于回退删除
+         */
+        private Stack<Integer> mSurfaceCount;
+
+        /**
          * Byte buffer used as the Pinyin string parameter for native function
          * call.
          */
@@ -1649,11 +1656,13 @@ public class PinyinIME extends InputMethodService {
 
         public DecodingInfo() {
             mSurface = new StringBuffer();
+            mSurfaceCount = new Stack<>();
             mSurfaceDecodedLen = 0;
         }
 
         public void reset() {
             mSurface.delete(0, mSurface.length());
+            mSurfaceCount.clear();
             mSurfaceDecodedLen = 0;
             mCursorPos = 0;
             mFullSent = "";
@@ -1677,8 +1686,14 @@ public class PinyinIME extends InputMethodService {
         }
 
         public void addSplChar(char ch, boolean reset) {
+            _addSplChar(ch,reset);
+            mSurfaceCount.add(1);
+        }
+
+        public void _addSplChar(char ch, boolean reset) {
             if (reset) {
                 mSurface.delete(0, mSurface.length());
+                mSurfaceCount.clear();
                 mSurfaceDecodedLen = 0;
                 mCursorPos = 0;
                 try {
@@ -1688,6 +1703,17 @@ public class PinyinIME extends InputMethodService {
             }
             mSurface.insert(mCursorPos, ch);
             mCursorPos++;
+        }
+
+        public void addSplString(String str, boolean resetOnFirst){
+            int length = str.length();
+            if (length == 0) return;
+            for (int i = 0;i < length;i++){
+                char ch = str.charAt(i);
+                boolean reset = (i == 0 && resetOnFirst);
+                _addSplChar(ch, reset);
+            }
+            mSurfaceCount.add(length);
         }
 
         // Prepare to delete before cursor. We may delete a spelling char if
@@ -1706,10 +1732,12 @@ public class PinyinIME extends InputMethodService {
                         break;
                     }
                 }
+
                 if (mPosDelSpl < 0) {
-                    mPosDelSpl = mCursorPos - 1;
-                    mCursorPos--;
-                    mIsPosInSpl = false;
+                    int last = mSurfaceCount.pop();
+                    mPosDelSpl = mSplStart.length - 3;
+                    mCursorPos --;
+                    mIsPosInSpl = true;
                 }
             }
         }
@@ -1854,6 +1882,8 @@ public class PinyinIME extends InputMethodService {
 
                 // Update the surface string to the one kept by engine.
                 mSurface.replace(0, mSurface.length(), pyStr);
+//                mSurfaceCount.clear();
+//                mSurfaceCount.add(pyStr.length());
 
                 if (mCursorPos > mSurface.length())
                     mCursorPos = mSurface.length();
@@ -1917,6 +1947,7 @@ public class PinyinIME extends InputMethodService {
             mTotalChoicesNum = 1;
 
             mSurface.replace(0, mSurface.length(), "");
+            mSurfaceCount.clear();
             mCursorPos = 0;
             mFullSent = tmp;
             mFixedLen = tmp.length();

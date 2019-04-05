@@ -38,12 +38,30 @@
     <string name="toggle_row_emailaddress">15</string>
     <string name="toggle_phone_sym">3</string>
 
+    <string name="toggle_row_py_no_cons">20</string>
+    <string name="toggle_row_py_bp">21</string>
+    <string name="toggle_row_py_m">22</string>
+    <string name="toggle_row_py_f">23</string>
+    <string name="toggle_row_py_d">24</string>
+    <string name="toggle_row_py_t">25</string>
+    <string name="toggle_row_py_n">26</string>
+    <string name="toggle_row_py_l">27</string>
+    <string name="toggle_row_py_gkh">28</string>
+    <string name="toggle_row_py_jqx">29</string>
+    <string name="toggle_row_py_z">30</string>
+    <string name="toggle_row_py_cs">31</string>
+    <string name="toggle_row_py_zhchsh">32</string>
+    <string name="toggle_row_py_r">33</string>
+    <string name="toggle_row_py_y">34</string>
+    <string name="toggle_row_py_w">35</string>
+
     <!-- settings related -->
     <string name="setting_sound_key">setting_sound_key</string>
     <string name="setting_vibrate_key">setting_vibrate_key</string>
     <string name="setting_prediction_key">setting_prediction_key</string>
     <string name="setting_switch_key">setting_switch_key</string>
     <string name="setting_advanced_key">setting_advanced_key</string>
+    <string name="setting_input_test_key">setting_input_test_key</string>
 
 	<string name="setting">飞雪输入法设置</string>
     <string name="setting_sound_key_title">按键声音</string>
@@ -51,6 +69,7 @@
     <string name="setting_prediction_title">联想输入</string>
     <string name="setting_switch_title">中英文切换</string>
     <string name="setting_switch_shift_space_title">Shift-space</string>
+    <string name="setting_input_test_title">输入测试</string>
 
     <string name="setting_enabled">开启</string>
     <string name="setting_disabled">关闭</string>
