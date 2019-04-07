@@ -108,8 +108,9 @@ public final class KeyCodeEx {
             case KeyCodeEx.KEYCODE_DELIMETER:
                 return Integer.parseInt(r.getString(R.string.toggle_row_py_no_cons));
             case KeyEvent.KEYCODE_B:
+                return Integer.parseInt(r.getString(R.string.toggle_row_py_b));
             case KeyEvent.KEYCODE_P:
-                return Integer.parseInt(r.getString(R.string.toggle_row_py_bp));
+                return Integer.parseInt(r.getString(R.string.toggle_row_py_p));
             case KeyEvent.KEYCODE_M:
                 return Integer.parseInt(r.getString(R.string.toggle_row_py_m));
             case KeyEvent.KEYCODE_F:

@@ -38,8 +38,8 @@
     <string name="toggle_row_emailaddress">15</string>
     <string name="toggle_phone_sym">3</string>
 
-    <string name="toggle_row_py_no_cons">20</string>
-    <string name="toggle_row_py_bp">21</string>
+    <string name="toggle_row_py_b">20</string>
+    <string name="toggle_row_py_p">21</string>
     <string name="toggle_row_py_m">22</string>
     <string name="toggle_row_py_f">23</string>
     <string name="toggle_row_py_d">24</string>
@@ -54,6 +54,7 @@
     <string name="toggle_row_py_r">33</string>
     <string name="toggle_row_py_y">34</string>
     <string name="toggle_row_py_w">35</string>
+    <string name="toggle_row_py_no_cons">36</string>
 
     <!-- settings related -->
     <string name="setting_sound_key">setting_sound_key</string>

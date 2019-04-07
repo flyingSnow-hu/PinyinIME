@@ -924,6 +924,8 @@ public class PinyinIME extends InputMethodService {
         }
         if (activeCandNo >= 0) {
             chooseAndUpdate(activeCandNo);
+            updateIcon(mInputModeSwitcher.switchBackToPyCons());
+            mSkbContainer.updateInputMode();
         }
     }
 

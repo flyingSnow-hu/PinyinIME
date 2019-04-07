@@ -363,13 +363,6 @@ public class InputModeSwitcher {
      */
     private int mToggleRowEmailAddress;
 
-    /**
-     * 拼音字母的行
-     */
-    private int mToggleRowPyNoCons;
-    private int mToggleRowPyBP;
-    private int mToggleRowPyM;
-
     class ToggleStates {
         /**
          * If it is true, this soft keyboard is a QWERTY one.
@@ -419,8 +412,7 @@ public class InputModeSwitcher {
         mToggleStatePhoneSym = Integer.parseInt(r
                 .getString(R.string.toggle_phone_sym));
 
-        mToggleStateGo = Integer
-                .parseInt(r.getString(R.string.toggle_enter_go));
+        mToggleStateGo = Integer.parseInt(r.getString(R.string.toggle_enter_go));
         mToggleStateSearch = Integer.parseInt(r
                 .getString(R.string.toggle_enter_search));
         mToggleStateSend = Integer.parseInt(r
@@ -435,10 +427,6 @@ public class InputModeSwitcher {
         mToggleRowUri = Integer.parseInt(r.getString(R.string.toggle_row_uri));
         mToggleRowEmailAddress = Integer.parseInt(r
                 .getString(R.string.toggle_row_emailaddress));
-
-        mToggleRowPyNoCons = Integer.parseInt(r.getString(R.string.toggle_row_py_no_cons));
-        mToggleRowPyBP = Integer.parseInt(r.getString(R.string.toggle_row_py_bp));
-        mToggleRowPyM = Integer.parseInt(r.getString(R.string.toggle_row_py_m));
     }
 
     public int getInputMode() {
@@ -481,6 +469,21 @@ public class InputModeSwitcher {
         }
 
         saveInputMode(newInputMode);
+        return mInputIcon;
+    }
+
+    public int switchBackToPyCons(){
+        int newInputMode = MODE_UNSET;
+        if (MODE_SKB_CHINESE_VOWEL == mInputMode) {
+            newInputMode = MODE_SKB_CHINESE_CONS;
+        }
+
+        if (newInputMode == mInputMode || MODE_UNSET == newInputMode) {
+            return mInputIcon;
+        }
+
+        saveInputMode(newInputMode);
+        prepareToggleStates(true);
         return mInputIcon;
     }
 
