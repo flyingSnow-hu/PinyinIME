@@ -47,7 +47,7 @@
   <row width="20%p">
     <key id="6"/>
     <key id="4"/>
-    <key code="62" key_type="5" width="30.608%p"/>
+    <key label=" " width="30.608%p"/>
     <key label="哈" width="14.696%p"/>
     <key id="1"/>
   </row>
@@ -56,7 +56,7 @@
     <key id="6"/>
     <key id="4"/>
     <key label="/" width="15.304%p"/>
-    <key code="62" key_type="5" width="15.304%p"/>
+    <key label=" " width="15.304%p"/>
     <key id="7"/>
     <key id="1"/>
   </row>
@@ -65,7 +65,7 @@
     <key id="6"/>
     <key id="4"/>
     <key label="\@" width="15.304%p"/>
-    <key code="62" key_type="5" width="15.304%p"/>
+    <key label=" " width="15.304%p"/>
     <key id="7"/>
     <key id="1"/>
   </row>

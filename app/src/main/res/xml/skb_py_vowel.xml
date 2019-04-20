@@ -104,7 +104,7 @@
         <key label="u" code="49"/>
     </row>
     <row row_id="@string/toggle_row_py_m" start_pos_y="80%p" start_pos_x="40%p">
-        <keys splitter="|"  labels="iu|iao" code="325|329"/>
+        <keys splitter="|"  labels="iu|iao" codes="325|329"/>
     </row>
 
     <!-- f -->
@@ -348,10 +348,10 @@
     <row row_id="@string/toggle_row_py_y" start_pos_y="40%p">
         <key label="e" code="33"/>
     </row>
-    <row row_id="@string/toggle_row_py_y" start_pos_y="40%p" start_pos_x="40%p">
+    <row row_id="@string/toggle_row_py_y" start_pos_y="60%p">
         <keys splitter="|" labels="i|in|ing" codes="37|327|328"/>
     </row>
-    <row row_id="@string/toggle_row_py_y" start_pos_y="60%p">
+    <row row_id="@string/toggle_row_py_y" start_pos_y="80%p">
         <keys splitter="|" labels="u|un|ue|uan"
             codes="49|334|342|339"/>
     </row>
