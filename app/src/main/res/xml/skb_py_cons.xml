@@ -18,15 +18,22 @@
     skb_cache_flag="true"
     skb_sticky_flag="true"
     width="10%p"
-    height="25%p"
+    height="20%p"
     key_type="0"
     repeat="false"
     balloon="true">
 
   <row>
+    <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0"
+        codes="8|9|10|11|12|13|14|15|16|7"/>
+  </row>
+
+  <row>
     <key label="韵" key_type="1" code="309"/>
-    <keys splitter="|" labels="q|w|r|t|y|p|zh|ch|sh"
-      codes="45|51|46|48|53|44|301|302|303"/>
+    <keys splitter="|" labels="q|w|r|t|y|p"
+        codes="45|51|46|48|53|44"/>
+    <key label="……" width="15.714%p"/>
+    <key id="3"/>
   </row>
 
   <row>
@@ -39,9 +46,9 @@
   <row>
     <keys splitter="|" labels="z|x|c|b|n|m"
       codes="54|52|31|30|42|41"/>
+    <keys splitter="|" labels="zh|ch|sh"
+      codes="301|302|303"/>
     <key label="。"/>
-    <key label="……" width="15.714%p"/>
-    <key id="3"/>
   </row>
 
   <row width="20%p">

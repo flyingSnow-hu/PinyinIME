@@ -22,10 +22,6 @@
   repeat="false"
   balloon="true">
 
-  <row>
-    <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0"
-      codes="8|9|10|11|12|13|14|15|16|7"/>
-  </row>
 
   <row>
     <keys splitter="|" labels="\@|#"/>
@@ -33,11 +29,10 @@
       <toggle_state state_id="@string/toggle_en_sym1" label="$"/>
     </key>
     <keys splitter="|" labels="%|&quot;|*"/>
-    <key label="—">
+    <key label="《">
       <toggle_state state_id="@string/toggle_en_sym1" label="-"/>
     </key>
-    <key label="、" icon="@drawable/dun_icon"
-      icon_popup="@drawable/dun_popup_icon">
+    <key label="》">
       <toggle_state state_id="@string/toggle_en_sym1" label="/"/>
     </key>
     <keys splitter="|" labels="(|)"/>
@@ -60,8 +55,8 @@
     <key label="；">
       <toggle_state state_id="@string/toggle_en_sym1" label=";"/>
     </key>
-    <key label="，">
-      <toggle_state state_id="@string/toggle_en_sym1" label=","/>
+    <key label="—">
+      <toggle_state state_id="@string/toggle_en_sym1" label="—"/>
     </key>
     <key label="？">
       <toggle_state state_id="@string/toggle_en_sym1" label="\?"/>

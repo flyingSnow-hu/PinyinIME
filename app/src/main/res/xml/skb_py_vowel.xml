@@ -188,8 +188,8 @@
 
     <!-- l -->
     <row row_id="@string/toggle_row_py_l" start_pos_y="0%p" width="16.667%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang|iang"
-            codes="29|311|312|313|314|331"/>
+        <keys splitter="|" labels="a|an|ao|ai|ang"
+            codes="29|311|312|313|314"/>
     </row>
     <row row_id="@string/toggle_row_py_l" start_pos_y="20%p" width="16.667%p">
         <keys splitter="|" labels="e|ei|ou|eng|ong|ing"
@@ -200,8 +200,8 @@
             codes="37|327|324|326|325|329"/>
     </row>
     <row row_id="@string/toggle_row_py_l" start_pos_y="60%p" width="16.667%p">
-        <keys splitter="|" labels="u|uo|uan|un|ian"
-            codes="49|336|339|334|330"/>
+        <keys splitter="|" labels="u|uo|uan|un|ian|iang"
+            codes="49|336|339|334|330|331"/>
     </row>
     <row row_id="@string/toggle_row_py_l" start_pos_y="80%p" width="16.667%p">
         <keys splitter="|" labels="ü|üe"
@@ -372,8 +372,8 @@
     </row>
 
     <!-- Delete key.-->
-    <row width="25%p" start_pos_x="80%p" start_pos_y="80%p">
-        <key start_pos_x="80%p" start_pos_y="80%p"
+    <row width="25%p" start_pos_x="80%p" start_pos_y="0%p">
+        <key start_pos_x="80%p" start_pos_y="0%p"
             width="20%p" height="20%p" code="67" key_type="1"
             repeat="false"/>
     </row>

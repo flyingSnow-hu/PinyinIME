@@ -19,19 +19,24 @@
   qwerty="true"
   qwerty_uppercase="true"
   width="10%p"
-  height="25%p"
+  height="20%p"
   key_type="0"
   repeat="false"
   balloon="true">
 
   <row>
-    <keys splitter="|" labels="Q|W|E|R|T|Y|U|I|O|P"
-      codes="45|51|33|46|48|53|49|37|43|44"/>
+    <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0"
+        codes="8|9|10|11|12|13|14|15|16|7"/>
   </row>
 
-  <row start_pos_x="4.078%p" width="10.205%p">
-    <keys splitter="|" labels="A|S|D|F|G|H|J|K|L"
-      codes="29|47|32|34|35|36|38|39|40"/>
+  <row>
+    <keys splitter="|" labels="Q|W|E|R|T|Y|U|I"
+      codes="45|51|33|46|48|53|49|37"/>
+  </row>
+
+  <row>
+    <keys splitter="|" labels="A|S|D|F|G|H|J|K|L|O"
+      codes="29|47|32|34|35|36|38|39|40|43"/>
   </row>
 
   <row width="10.205%p">
@@ -49,8 +54,8 @@
       <toggle_state state_id="@string/toggle_cn_cand" label="'"
         key_type="1"/>
     </key>
-    <keys splitter="|" labels="Z|X|C|V|B|N|M"
-      codes="54|52|31|50|30|42|41"/>
+    <keys splitter="|" labels="Z|X|C|V|B|N|M|P"
+      codes="54|52|31|50|30|42|41|44"/>
     <key id="3"/>
   </row>
 
@@ -63,7 +68,7 @@
     <key id="1"/>
   </row>
 
-  <row width="20%p" row_id="@string/toggle_row_en" start_pos_y="75%p">
+  <row width="20%p" row_id="@string/toggle_row_en" start_pos_y="80%p">
     <key id="6"/>
     <key id="4"/>
     <key code="62" key_type="5" width="30.608%p"/>
@@ -71,7 +76,7 @@
     <key id="1"/>
   </row>
 
-  <row width="20%p" row_id="@string/toggle_row_uri" start_pos_y="75%p">
+  <row width="20%p" row_id="@string/toggle_row_uri" start_pos_y="80%p">
     <key id="6"/>
     <key id="4"/>
     <key label="/" width="15.304%p"/>
@@ -80,7 +85,7 @@
     <key id="1"/>
   </row>
 
-  <row width="20%p" row_id="@string/toggle_row_emailaddress" start_pos_y="75%p">
+  <row width="20%p" row_id="@string/toggle_row_emailaddress" start_pos_y="80%p">
     <key id="6"/>
     <key id="4"/>
     <key label="\@" width="15.304%p"/>
