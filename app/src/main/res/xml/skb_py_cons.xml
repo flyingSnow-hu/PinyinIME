@@ -29,26 +29,26 @@
   </row>
 
   <row>
-    <key label="韵" key_type="1" code="309"/>
+    <keys splitter="|" labels="zh|ch|sh"
+        codes="301|302|303"/>
     <keys splitter="|" labels="q|w|r|t|y|p"
         codes="45|51|46|48|53|44"/>
-    <key label="……" width="15.714%p"/>
-    <key id="3"/>
+    <key label="韵" key_type="1" code="309"/>
   </row>
 
   <row>
     <keys splitter="|" labels="s|d|f|g|h|j|k|l"
       codes="47|32|34|35|36|38|39|40"/>
+    <key label="。"/>
     <key label="、"/>
-    <key label="，"/>
   </row>
 
   <row>
     <keys splitter="|" labels="z|x|c|b|n|m"
       codes="54|52|31|30|42|41"/>
-    <keys splitter="|" labels="zh|ch|sh"
-      codes="301|302|303"/>
-    <key label="。"/>
+    <key label="，"/>
+    <key label="……" width="15.714%p"/>
+    <key id="3"/>
   </row>
 
   <row width="20%p">

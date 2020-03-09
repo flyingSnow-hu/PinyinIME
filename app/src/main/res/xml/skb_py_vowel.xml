@@ -17,7 +17,7 @@
   skb_template="@xml/skb_template1"
   skb_cache_flag="true"
   skb_sticky_flag="true"
-  width="20%p"
+  width="16.667%p"
   height="20%p"
   key_type="0"
   repeat="false"
@@ -40,208 +40,190 @@
 
     <!-- b -->
     <row row_id="@string/toggle_row_py_b" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+        <keys splitter="|" labels="in|ing"
+            codes="327|328"/>
     </row>
     <row row_id="@string/toggle_row_py_b" start_pos_y="20%p">
-        <key label="o" code="43"/>
-    </row>
-    <row row_id="@string/toggle_row_py_b" start_pos_y="20%p" start_pos_x="40%p">
-        <keys splitter="|" labels="en|ei|eng"
-            codes="319|320|321"/>
+        <keys splitter="|" labels="ian|i|u|o"
+            codes="330|37|49|43"/>
     </row>
     <row row_id="@string/toggle_row_py_b" start_pos_y="40%p">
-        <keys splitter="|" labels="i|ie|in|ing|ian"
-            codes="37|326|327|328|330"/>
+        <keys splitter="|" labels="an|ao" codes="311|312"/>
+    </row>
+    <row row_id="@string/toggle_row_py_b" start_pos_y="40%p" start_pos_x="66.667%p">
+        <key label="ie" code="326"/>
     </row>
     <row row_id="@string/toggle_row_py_b" start_pos_y="60%p">
-        <key label="u" code="49"/>
+        <keys splitter="|" labels="ang|ai|en" codes="314|313|319"/>
     </row>
-    <row row_id="@string/toggle_row_py_b" start_pos_y="60%p" start_pos_x="80%p">
-        <key label="iao" code="329"/>
+    <row row_id="@string/toggle_row_py_b" start_pos_y="80%p">
+        <keys splitter="|" labels="iao|a|eng|ei" codes="329|29|321|320"/>
     </row>
 
     <!-- p -->
     <row row_id="@string/toggle_row_py_p" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+        <keys splitter="|" labels="in|ing" codes="327|328"/>
     </row>
     <row row_id="@string/toggle_row_py_p" start_pos_y="20%p">
-        <keys splitter="|" labels="o|ou" codes="43|317"/>
-    </row>
-    <row row_id="@string/toggle_row_py_p" start_pos_y="20%p" start_pos_x="40%p">
-        <keys splitter="|" labels="en|ei|eng"
-            codes="319|320|321"/>
+        <keys splitter="|" labels="ian|i|u|o" codes="330|37|49|43"/>
     </row>
     <row row_id="@string/toggle_row_py_p" start_pos_y="40%p">
-        <keys splitter="|" labels="i|ie|in|ing|ian"
-            codes="37|326|327|328|330"/>
+        <keys splitter="|" labels="an|ao" codes="311|312"/>
+    </row>
+    <row row_id="@string/toggle_row_py_p" start_pos_y="40%p" start_pos_x="66.667%p">
+        <key label="ie" code="326"/>
     </row>
     <row row_id="@string/toggle_row_py_p" start_pos_y="60%p">
-        <key label="u" code="49"/>
+        <keys splitter="|" labels="ang|ai|en|ou" codes="314|313|319|317"/>
     </row>
-    <row row_id="@string/toggle_row_py_p" start_pos_y="60%p" start_pos_x="80%p">
-        <key label="iao" code="329"/>
+    <row row_id="@string/toggle_row_py_p" start_pos_y="80%p">
+        <keys splitter="|" labels="iao|a|eng|ei" codes="329|29|321|320"/>
     </row>
 
     <!-- m -->
     <row row_id="@string/toggle_row_py_m" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+        <keys splitter="|" labels="in|ing" codes="327|328"/>
     </row>
     <row row_id="@string/toggle_row_py_m" start_pos_y="20%p">
-        <keys splitter="|" labels="o|ou" codes="43|317"/>
+        <keys splitter="|" labels="ian|i|u|o" codes="330|37|49|43"/>
     </row>
     <row row_id="@string/toggle_row_py_m" start_pos_y="40%p">
-        <keys splitter="|" labels="e|en|ei|eng"
-            codes="33|319|320|321"/>
+        <keys splitter="|" labels="an|ao|e" codes="311|312|33"/>
+    </row>
+    <row row_id="@string/toggle_row_py_m" start_pos_y="40%p" start_pos_x="66.667%p">
+        <key label="ie" code="326"/>
     </row>
     <row row_id="@string/toggle_row_py_m" start_pos_y="60%p">
-        <keys splitter="|" labels="i|ie|in|ing|ian"
-            codes="37|326|327|328|330"/>
+        <keys splitter="|" labels="ang|ai|en|ou" codes="314|313|319|317"/>
     </row>
     <row row_id="@string/toggle_row_py_m" start_pos_y="80%p">
-        <key label="u" code="49"/>
-    </row>
-    <row row_id="@string/toggle_row_py_m" start_pos_y="80%p" start_pos_x="40%p">
-        <keys splitter="|"  labels="iu|iao" codes="325|329"/>
+        <keys splitter="|" labels="iao|a|eng|ei|iu" codes="329|29|321|320|325"/>
     </row>
 
     <!-- f -->
-    <row row_id="@string/toggle_row_py_f" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ang"
-            codes="29|311|314"/>
+    <row row_id="@string/toggle_row_py_f"
+        start_pos_x="33.333%p" start_pos_y="20%p">
+        <keys splitter="|" labels="u|o" codes="49|43"/>
     </row>
-    <row row_id="@string/toggle_row_py_f" start_pos_y="20%p">
-        <keys splitter="|" labels="o|ou"
-            codes="43|317"/>
-    </row>
-    <row row_id="@string/toggle_row_py_f" start_pos_y="40%p" start_pos_x = "40%p">
-        <keys splitter="|" labels="en|ei|eng"
-            codes="319|320|321"/>
+    <row row_id="@string/toggle_row_py_f" start_pos_y="40%p">
+        <keys splitter="|" labels="an" codes="311"/>
     </row>
     <row row_id="@string/toggle_row_py_f" start_pos_y="60%p">
-        <key label="u" code="49"/>
+        <key label="ang" code="314"/>
+    </row>
+    <row row_id="@string/toggle_row_py_f" start_pos_y="60%p" start_pos_x="33.333%p">
+        <keys splitter="|" labels="en|ou" codes="319|317"/>
+    </row>
+    <row row_id="@string/toggle_row_py_f" start_pos_y="80%p" start_pos_x="16.667%p">
+        <keys splitter="|" labels="a|eng|ei" codes="29|321|320"/>
     </row>
 
     <!-- d -->
-    <row row_id="@string/toggle_row_py_d" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+    <row row_id="@string/toggle_row_py_d" start_pos_y="0%p"  start_pos_x="16.667%p" >
+        <keys splitter="|" labels="ing|uan|ui" codes="328|339|337"/>
     </row>
     <row row_id="@string/toggle_row_py_d" start_pos_y="20%p">
-        <keys splitter="|" labels="e|ou|ong|eng|ing"
-            codes="33|317|316|321|328"/>
+        <keys splitter="|" labels="ian|i|u|uo|un" codes="330|37|49|336|334"/>
     </row>
     <row row_id="@string/toggle_row_py_d" start_pos_y="40%p">
-        <keys splitter="|" labels="i|iu|ie|iao|ian"
-            codes="37|325|326|329|330"/>
+        <keys splitter="|" labels="an|ao|e|ong|ie" codes="311|312|33|316|326"/>
     </row>
     <row row_id="@string/toggle_row_py_d" start_pos_y="60%p">
-        <keys splitter="|" labels="u|un|uo|ui|uan"
-            codes="49|334|336|337|339"/>
+        <keys splitter="|" labels="ang|ai|en|ou|ia" codes="314|313|319|317|324"/>
     </row>
     <row row_id="@string/toggle_row_py_d" start_pos_y="80%p">
-        <keys splitter="|" labels="ei|ia|en"
-            codes="320|324|319"/>
+        <keys splitter="|" labels="iao|a|eng|ei|iu" codes="329|29|321|320|325"/>
     </row>
 
     <!-- t -->
-    <row row_id="@string/toggle_row_py_t" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+    <row row_id="@string/toggle_row_py_t" start_pos_y="0%p"  start_pos_x="16.667%p" >
+        <keys splitter="|" labels="ing|uan|ui" codes="328|339|337"/>
     </row>
     <row row_id="@string/toggle_row_py_t" start_pos_y="20%p">
-        <keys splitter="|" labels="e|ou|ong|eng"
-            codes="33|317|316|321"/>
+        <keys splitter="|" labels="ian|i|u|uo|un" codes="330|37|49|336|334"/>
     </row>
     <row row_id="@string/toggle_row_py_t" start_pos_y="40%p">
-        <keys splitter="|" labels="i|ie|iao|ian|ing"
-            codes="37|326|329|330|328"/>
+        <keys splitter="|" labels="an|ao|e|ong|ie" codes="311|312|33|316|326"/>
     </row>
     <row row_id="@string/toggle_row_py_t" start_pos_y="60%p">
-        <keys splitter="|" labels="u|un|uo|ui|uan"
-            codes="49|334|336|337|339"/>
+        <keys splitter="|" labels="ang|ai" codes="314|313"/>
+    </row>
+    <row row_id="@string/toggle_row_py_t" start_pos_y="60%p" start_pos_x="50%p">
+        <key label="ou" code="317"/>
+    </row>
+    <row row_id="@string/toggle_row_py_t" start_pos_y="80%p">
+        <keys splitter="|" labels="iao|a|eng|ei" codes="329|29|321|320"/>
     </row>
 
     <!-- n -->
-    <row row_id="@string/toggle_row_py_n" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+    <row row_id="@string/toggle_row_py_n" start_pos_y="0%p"  start_pos_x="16.667%p" >
+        <keys splitter="|" labels="in|ing|uan|ü|iang" codes="327|328|339|341|331"/>
     </row>
     <row row_id="@string/toggle_row_py_n" start_pos_y="20%p">
-        <keys splitter="|" labels="e|ei|eng|ong|ing"
-            codes="33|320|321|316|328"/>
+        <keys splitter="|" labels="ian|i|u|uo|ÜE" codes="330|37|49|336|342"/>
     </row>
     <row row_id="@string/toggle_row_py_n" start_pos_y="40%p">
-        <keys splitter="|" labels="i|in|iao|ian|iang"
-            codes="37|327|329|330|331"/>
+        <keys splitter="|" labels="an|ao|e|ong|ie" codes="311|312|33|316|326"/>
     </row>
     <row row_id="@string/toggle_row_py_n" start_pos_y="60%p">
-        <keys splitter="|" labels="u|uo|uan|ü|üe"
-            codes="49|336|339|50|342"/>
+        <keys splitter="|" labels="ang|ai|en|ou" codes="314|313|319|317"/>
     </row>
     <row row_id="@string/toggle_row_py_n" start_pos_y="80%p">
-        <keys splitter="|" labels="iu|ie|en|ou"
-            codes="325|326|319|317"/>
+        <keys splitter="|" labels="iao|a|eng|ei|iu" codes="329|29|321|320|325"/>
     </row>
 
     <!-- l -->
-    <row row_id="@string/toggle_row_py_l" start_pos_y="0%p" width="16.667%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+    <row row_id="@string/toggle_row_py_l" start_pos_y="0%p">
+        <keys splitter="|" labels="in|ing|uan|ü|iang" codes="327|328|339|341|331"/>
     </row>
-    <row row_id="@string/toggle_row_py_l" start_pos_y="20%p" width="16.667%p">
-        <keys splitter="|" labels="e|ei|ou|eng|ong|ing"
-            codes="33|320|317|321|316|328"/>
+    <row row_id="@string/toggle_row_py_l" start_pos_y="20%p">
+        <keys splitter="|" labels="ian|i|u|uo|un" codes="330|37|49|336|334"/>
     </row>
-    <row row_id="@string/toggle_row_py_l" start_pos_y="40%p" width="16.667%p">
-        <keys splitter="|" labels="i|in|ia|ie|iu|iao"
-            codes="37|327|324|326|325|329"/>
+    <row row_id="@string/toggle_row_py_l" start_pos_y="40%p">
+        <keys splitter="|" labels="an|ao|e|ong|ie" codes="311|312|33|316|326"/>
     </row>
-    <row row_id="@string/toggle_row_py_l" start_pos_y="60%p" width="16.667%p">
-        <keys splitter="|" labels="u|uo|uan|un|ian|iang"
-            codes="49|336|339|334|330|331"/>
+    <row row_id="@string/toggle_row_py_l" start_pos_y="60%p">
+        <keys splitter="|" labels="ang|ai|ÜE|ou|ia" codes="314|313|342|317|324"/>
     </row>
-    <row row_id="@string/toggle_row_py_l" start_pos_y="80%p" width="16.667%p">
-        <keys splitter="|" labels="ü|üe"
-            codes="50|342"/>
+    <row row_id="@string/toggle_row_py_l" start_pos_y="80%p">
+        <keys splitter="|" labels="iao|a|eng|ei|iu" codes="329|29|321|320|325"/>
     </row>
 
     <!-- g k h -->
-    <row row_id="@string/toggle_row_py_gkh" start_pos_y="0%p">
-        <keys splitter="|" labels="a|an|ao|ai|ang"
-            codes="29|311|312|313|314"/>
+    <row row_id="@string/toggle_row_py_gkh" start_pos_y="0%p"  start_pos_x="16.667%p" >
+        <keys splitter="|" labels="uai|uan|ui|uang" codes="338|339|337|340"/>
     </row>
-    <row row_id="@string/toggle_row_py_gkh" start_pos_y="20%p" start_pos_x="60%p">
-        <keys splitter="|" labels="ou|ong"
-            codes="317|316"/>
+    <row row_id="@string/toggle_row_py_gkh" start_pos_y="20%p" start_pos_x="33.333%p">
+        <keys splitter="|" labels="u|uo|un" codes="49|336|334"/>
     </row>
     <row row_id="@string/toggle_row_py_gkh" start_pos_y="40%p">
-        <keys splitter="|" labels="e|en|ei|eng"
-            codes="33|319|320|321"/>
+        <keys splitter="|" labels="an|ao|e|ong" codes="311|312|33|316"/>
     </row>
     <row row_id="@string/toggle_row_py_gkh" start_pos_y="60%p">
-        <keys splitter="|" labels="u|un|ua|uo|ui"
-            codes="49|334|335|336|337"/>
+        <keys splitter="|" labels="ang|ai|en|ou|ua" codes="314|313|319|317|335"/>
     </row>
-    <row row_id="@string/toggle_row_py_gkh" start_pos_y="80%p">
-        <keys splitter="|" labels="uai|uan|uang"
-            codes="338|339|340"/>
+    <row row_id="@string/toggle_row_py_gkh" start_pos_y="80%p" start_pos_x="16.667%p">
+        <keys splitter="|" labels="a|eng|ei" codes="29|321|320"/>
     </row>
 
     <!-- j q x -->
     <row row_id="@string/toggle_row_py_jqx" start_pos_y="0%p">
-        <keys splitter="|" labels="i|ia|iao|ian|iang"
-            codes="37|324|329|330|331"/>
+        <keys splitter="|" labels="in|ing|uan|iang" codes="327|328|339|331"/>
     </row>
     <row row_id="@string/toggle_row_py_jqx" start_pos_y="20%p">
-        <keys splitter="|" labels="in|iu|ie|ing|iong"
-            codes="327|325|326|328|332"/>
+        <keys splitter="|" labels="ian|i|u|un|ue" codes="330|37|49|336|342"/>
     </row>
-    <row row_id="@string/toggle_row_py_jqx" start_pos_y="40%p">
-        <keys splitter="|" labels="u|un|ue|uan"
-            codes="49|334|342|339"/>
+    <row row_id="@string/toggle_row_py_jqx" start_pos_y="40%p" start_pos_x="33.333%p">
+        <keys splitter="|" labels="iong|ie" codes="332|326"/>
+    </row>
+    <row row_id="@string/toggle_row_py_jqx" start_pos_y="60%p" start_pos_x="50%p">
+        <key label="ia" code="324"/>
+    </row>
+    <row row_id="@string/toggle_row_py_jqx" start_pos_y="80%p">
+        <key label="iao" code="329"/>
+    </row>
+    <row row_id="@string/toggle_row_py_jqx" start_pos_y="80%p" start_pos_x="50%p">
+        <key label="iu" code="325"/>
     </row>
 
     <!-- z -->
@@ -372,10 +354,8 @@
     </row>
 
     <!-- Delete key.-->
-    <row width="25%p" start_pos_x="80%p" start_pos_y="0%p">
-        <key start_pos_x="80%p" start_pos_y="0%p"
-            width="20%p" height="20%p" code="67" key_type="1"
-            repeat="false"/>
+    <row >
+        <key id="3"/>
     </row>
 
 

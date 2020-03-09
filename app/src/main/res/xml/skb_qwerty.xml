@@ -30,13 +30,13 @@
   </row>
 
   <row>
-    <keys splitter="|" labels="Q|W|E|R|T|Y|U|I"
-      codes="45|51|33|46|48|53|49|37"/>
+    <keys splitter="|" labels="Q|W|E|R|T|Y|U|I|O|P"
+      codes="45|51|33|46|48|53|49|37|43|44"/>
   </row>
 
   <row>
-    <keys splitter="|" labels="A|S|D|F|G|H|J|K|L|O"
-      codes="29|47|32|34|35|36|38|39|40|43"/>
+    <keys splitter="|" labels="A|S|D|F|G|H|J|K|L"
+      codes="29|47|32|34|35|36|38|39|40"/>
   </row>
 
   <row width="10.205%p">
@@ -54,8 +54,8 @@
       <toggle_state state_id="@string/toggle_cn_cand" label="'"
         key_type="1"/>
     </key>
-    <keys splitter="|" labels="Z|X|C|V|B|N|M|P"
-      codes="54|52|31|50|30|42|41|44"/>
+    <keys splitter="|" labels="Z|X|C|V|B|N|M"
+      codes="54|52|31|50|30|42|41"/>
     <key id="3"/>
   </row>
 

@@ -94,7 +94,7 @@
   </key>
 
   <!-- Delete key.-->
-  <key id="3" start_pos_x="85.715%p" start_pos_y="20%p"
+  <key id="3" start_pos_x="85.715%p" start_pos_y="60%p"
       width="14.286%p" height="20%p" code="67" key_type="1"
       repeat="true"/>
 
