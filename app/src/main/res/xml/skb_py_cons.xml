@@ -59,7 +59,7 @@
     <key id="1"/>
   </row>
 
-  <row width="20%p" row_id="@string/toggle_row_uri" start_pos_y="75%p">
+  <row width="20%p" row_id="@string/toggle_row_uri" start_pos_y="80%p">
     <key id="6"/>
     <key id="4"/>
     <key label="/" width="15.304%p"/>
@@ -68,7 +68,7 @@
     <key id="1"/>
   </row>
 
-  <row width="20%p" row_id="@string/toggle_row_emailaddress" start_pos_y="75%p">
+  <row width="20%p" row_id="@string/toggle_row_emailaddress" start_pos_y="80%p">
     <key id="6"/>
     <key id="4"/>
     <key label="\@" width="15.304%p"/>
