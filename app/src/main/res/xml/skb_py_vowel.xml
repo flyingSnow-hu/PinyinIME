@@ -34,7 +34,7 @@
         <keys splitter="|" labels="ang|ai|en|ou" codes="314|313|319|317"/>
     </row>
     <row row_id="@string/toggle_row_py_no_cons" start_pos_y="80%p">
-        <keys splitter="|" labels="ER|a|eng|ei" codes="322|29|321|320"/>
+        <keys splitter="|" labels="er|a|eng|ei" codes="322|29|321|320"/>
     </row>
 
     <!-- b -->
@@ -261,7 +261,7 @@
 
     <!-- zh ch sh -->
     <row row_id="@string/toggle_row_py_zhchsh" start_pos_y="0%p"  start_pos_x="16.667%p" >
-        <keys splitter="|" labels="uai|uan|ui" codes="338|339|337"/>
+        <keys splitter="|" labels="uai|uan|ui|uang" codes="338|339|337|340"/>
     </row>
     <row row_id="@string/toggle_row_py_zhchsh" start_pos_y="20%p" start_pos_x="16.667%p">
         <keys splitter="|" labels="i|u|uo|un" codes="37|49|336|334"/>
