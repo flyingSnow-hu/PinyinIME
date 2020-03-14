@@ -24,6 +24,10 @@
 
 
   <row>
+    <keys splitter="|" labels="1|2|3|4|5|6|7|8|9|0"
+        codes="8|9|10|11|12|13|14|15|16|7"/>
+  </row>
+  <row>
     <keys splitter="|" labels="\@|#"/>
     <key label="￥">
       <toggle_state state_id="@string/toggle_en_sym1" label="$"/>

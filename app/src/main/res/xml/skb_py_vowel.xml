@@ -306,6 +306,9 @@
     <row row_id="@string/toggle_row_py_y" start_pos_y="40%p">
         <keys splitter="|" labels="an|ao|e|ong" codes="311|312|33|316"/>
     </row>
+    <row row_id="@string/toggle_row_py_y" start_pos_y="60%p">
+        <key label="ang" code="314"/>
+    </row>
     <row row_id="@string/toggle_row_py_y" start_pos_y="60%p" start_pos_x="50%p">
         <key label="ou" code="317"/>
     </row>
